@@ -1,12 +1,3 @@
-# Los 10 Mandamientos de Este Repositorio
-
-## 1.- NUNCA PUSHEAR A MAIN 
-## 2.- Si no tienen permiso de pushear abran pull request
-## 3.- No modificar archivos que no tienen que ver con su area
-## 4.- Comenten el código según vayan escribiendo
-## 5.- Hagan push y pull request serios para que sea más fácil mantener un registro
-## 6.- Cualquier duda con el github favor de preguntar al departamento de dudas (Derek y Hugo)
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -23,9 +14,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
