@@ -1,3 +1,4 @@
+<span style="color:blue">some *blue* text</span>.
 # Los 10 Mandamientos de Este Repositorio
 
 ## 1.- NUNCA PUSHEAR A MAIN 
