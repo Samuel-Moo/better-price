@@ -1,5 +1,6 @@
 # Los 10 Mandamientos de Este Repositorio
 
+
 ## 1.- NUNCA PUSHEAR A MAIN 
 ## 2.- Si no tienen permiso de pushear abran pull request
 ## 3.- No modificar archivos que no tienen que ver con su area
