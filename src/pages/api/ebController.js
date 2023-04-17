@@ -15,17 +15,25 @@ export default async (req, res) => {
   };
   
 
-  async function Ebay(product) {
+ // Esta es una función asíncrona llamada Ebay que recibe un parámetro llamado product.
+async function Ebay(product) {
+    // Se importa el módulo ebay-scraper-wintr.
     const ebayApi = require('ebay-scraper-wintr')
+    // Se crea una instancia del objeto ebayApi utilizando una clave de API.
     const search = new ebayApi('643cb85e09003c04999643e38f3a41bc2519')
   
+    // Se utiliza la instancia del objeto search para realizar una búsqueda de productos en eBay con la cadena de búsqueda especificada como parámetro.
     return search.getProducts(`https://www.ebay.com/sch/i.html?_nkw=${product}`) // Example: https://www.ebay.com/sch/i.html?_nkw=phone
+      // Si la búsqueda es exitosa, el método then devuelve el segundo elemento del arreglo data (que contiene la información del producto) y lo imprime en la consola.
       .then((data) => {
         console.log(data[1])
+        // Luego, se devuelve un arreglo que contiene el segundo elemento de data.
         return [data[1]]
       })
+      // Si la búsqueda falla, el método catch registra el error en la consola.
       .catch((err) => {
         console.error(err)
       })
   }
+  
   
