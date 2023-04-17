@@ -8,6 +8,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const [response, setResponse] = useState([]);
   const [mlresponse, setMlresponse] = useState([]);
+  const [ebresponse, setEbresponse] = useState([]);
 
   const handleSubmit = async () => {
     event.preventDefault();
@@ -30,12 +31,22 @@ export default function Home() {
     const dataMl = await resultMl.json();
     setMlresponse(dataMl.result);
 
+    const resultEb = await fetch("/api/ebController", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input: inputValue }),
+    });
+
+    const dataEb = await resultEb.json();
+    setEbresponse(dataEb.result);
+
     setShowCards(true);
     return;
   };
 
   console.log(response);
   console.log(mlresponse);
+  console.log(ebresponse);
 
   return (
     <>
@@ -54,7 +65,7 @@ export default function Home() {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="What do you want?"
+              placeholder="Search something."
               className="mt-10 w-80 input input-bordered  max-w-xs"
             />
             {/* Imput de tipo texto para las busquedas, Aun falta meterlo dentro de un form en el index */}
@@ -62,7 +73,9 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div className="flex justify-items-center">
+
+      
+      <div className="flex justify-center">
         {showCards && (
           <>
             {response.map((amazon, i) => {
@@ -110,8 +123,39 @@ export default function Home() {
                         <h2 className="card-title">{mercadolibre.title}</h2>
                         <p>{mercadolibre.price} MXN</p>
                         <div className="card-actions justify-end">
-                          <Link className="btn btn-primary" href={mercadolibre.url}>
+                          <Link
+                            className="btn btn-primary"
+                            href={mercadolibre.url}
+                          >
                             Buy on Mercadolibre
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {ebresponse.map((ebay, i) => {
+              return (
+                <div className="flex mx-12">
+                  <div className="container block-line flex">
+                    <div className="card w-96 glass text-center text-neutral-content">
+                      <figure>
+                        <Image
+                          src={'https://cdn.dribbble.com/users/5051049/screenshots/14080247/ebay-logo-redesign-dribbble_4x.jpg'}
+                          alt="image"
+                          width={400}
+                          height={400}
+                        />
+                      </figure>
+                      <div className="card-body">
+                        <h2 className="card-title">{ebay.name}</h2>
+                        <p>{ebay.price} USD</p>
+                        <div className="card-actions justify-end">
+                          <Link className="btn btn-primary" href={ebay.link}>
+                            Buy on ebay
                           </Link>
                         </div>
                       </div>
@@ -123,6 +167,8 @@ export default function Home() {
           </>
         )}
       </div>
+      
+
       <Bubble />{" "}
       {/* Burbujas de animacion provienen de  './components/Bubble' */}
     </>

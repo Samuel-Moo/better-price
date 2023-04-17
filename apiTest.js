@@ -1,17 +1,10 @@
-const axios = require("axios");
-
-const options = {
-  method: 'GET',
-  url: 'https://ebay-data-scraper.p.rapidapi.com/products',
-  params: {page_number: '1', product_name: 'paper ink'},
-  headers: {
-    'X-RapidAPI-Key': '183172dcb7mshc5480fa98b30d9ap1dee26jsnc981973d94f7',
-    'X-RapidAPI-Host': 'ebay-data-scraper.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+const Ebay = require('ebay-scraper-wintr')
+const scraper = new Ebay('643cb85e09003c04999643e38f3a41bc2519')
+ 
+scraper.getProducts('https://www.ebay.com/sch/i.html?_nkw=phone') // Example: https://www.ebay.com/sch/i.html?_nkw=phone
+.then((data) => {
+  console.log(data)
+})
+.catch((err) => {
+  console.error(err)
+})
